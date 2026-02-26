@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ito Web版</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:sans-serif;
+    background:linear-gradient(135deg,#ccefff,#99ddff);
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    color:white;
+}
+
+button, select{
+    padding:15px 25px;
+    margin:15px;
+    font-size:18px;
+    border:none;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+button{
+    background:white;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#number, #theme{
+    font-size:28px;
+    margin:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>ito Web版</h1>
+
+<label>
+ゲームマスターですか？
+<select id="master">
+<option value="n">いいえ</option>
+<option value="y">はい</option>
+</select>
+</label>
+
+<br>
+
+<button onclick="startGame()">数字を引く</button>
+
+<div id="number"></div>
+<div id="theme"></div>
+
+<script>
+
+const thema = [
+"優しい声のメンバー",
+"背が高いメンバー",
+"陽キャ、コミュ強のメンバー",
+"声が高いメンバー",
+"運動神経が良いメンバー",
+"部屋が汚いメンバー",
+"歌がうまいメンバー",
+"ゲームがうまいメンバー",
+"かっこいいオリ曲",
+"かわいいオリ曲",
+"ライブで盛り上がるオリ曲"
+];
+
+function startGame(){
+    
+    const number = Math.floor(Math.random()*100)+1;
+    document.getElementById("number").innerHTML =
+        "あなたの数字：" + number;
+    
+    const master = document.getElementById("master").value;
+    
+    if(master === "y"){
+        const randomTheme =
+            thema[Math.floor(Math.random()*thema.length)];
+        document.getElementById("theme").innerHTML =
+            "テーマ：" + randomTheme;
+    }else{
+        document.getElementById("theme").innerHTML = "";
+    }
+}
+
+</script>
+
+</body>
+</html>
